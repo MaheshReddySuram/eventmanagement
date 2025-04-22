@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-dt36((4dr38y@i#q%z9k_w+0c%h^m#c9=s5bhton5ty6z4lk^c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.118.4.244','maheshreddy.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['3.147.238.164','maheshreddy.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'eventshowcase',
         'USER': 'root',
         'PASSWORD': 'root',  # Leave blank if using sudo mysql
-        'HOST': 'localhost',
+        'HOST': '3.147.238.164',
         'PORT': '3306',
     }
 }
