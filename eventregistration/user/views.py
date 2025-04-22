@@ -81,16 +81,23 @@ def registration(request):
 
 # --------------------------------------------------------------------------------
 
-
 def get_events(request):
     if "username" in request.session:
         uname = request.session.get('username')
         with connection.cursor() as cursor:
-            cursor.execute("select * from event")
+            # Get user type
+            cursor.execute("SELECT usertype FROM user WHERE email = %s", [uname])
+            user_data = cursor.fetchone()
+            user_type = user_data[0] if user_data else "attendee"
+
+            # Get all events
+            cursor.execute("SELECT * FROM event")
             result = cursor.fetchall()
+
             e = []
             for row in result:
                 obj = events()
+                obj.event_id = row[0]
                 obj.event_name = row[1]
                 obj.event_organizer = row[2]
                 obj.event_type = row[3]
@@ -102,24 +109,19 @@ def get_events(request):
                 obj.capacity = row[9]
                 obj.cost = row[10]
                 e.append(obj)
-            
-            # Get all events
-            cursor.execute("SELECT * FROM event")
-            events_list = cursor.fetchall()
-            
-            # Get registered events for this user
-            registered_events = []
-            cursor.execute("SELECT e_id FROM event_register WHERE email=%s", [uname])
-            for row in cursor.fetchall():
-                registered_events.append(row[0])
-            
-            return render(request, 'showevents.html', {
-                'events': events_list,
-                'username': uname,
-                'registered_events': registered_events
-            })
+
+            # Get registered events
+            cursor.execute("SELECT e_id FROM event_register WHERE email = %s", [uname])
+            registered_events = [row[0] for row in cursor.fetchall()]
+
+        return render(request, 'showevents.html', {
+            'events': e,  # This is the list of event objects
+            'username': uname,
+            'registered_events': registered_events,
+            'user_type': user_type
+        })
     else:
-         return render(request, 'login.html')
+        return render(request, 'login.html')
 # --------------------------------------------------------------------------------
 
 
