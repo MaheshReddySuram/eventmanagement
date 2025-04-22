@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'eventregistration.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eventshowcase',
-        'USER': 'root',
-        'PASSWORD': 'root',  # Leave blank if using sudo mysql
-        'HOST': '3.147.238.164',
-        'PORT': '3306',
+        'NAME': 'eventshowcase',  # your database name
+        'USER': 'root',           # your MySQL user
+        'PASSWORD': 'SAKETh@82',  # your MySQL password
+        'HOST': '3.147.238.164',  # IP of the EC2 instance
+        'PORT': '3306',           # default MySQL port
     }
 }
 
