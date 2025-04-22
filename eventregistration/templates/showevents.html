@@ -44,14 +44,23 @@
                     <!-- navigation menu -->
                     <li><a data-scroll href="{% url 'index1' %}">About</a></li>
                     <li  class="active"><a href="{% url 'get_events' %}">Events</a></li>
+                    {% if user_type == 'eventmanager' %}
+                    <li><a href="{% url 'events_reg' %}" class="btn-create-event">Create Event</a></li>
+                    {% endif %}                
                     <li><a data-scroll href="#faqs">FAQs</a></li>
-                    <li><a data-scroll href="{% url 'index1' %}">Contact Us</a></li>
+                    <li><a  href="{%url 'contact' %}">Contact Us</a></li>
                     <li style="color: #fff;
                     text-transform: uppercase;
                     font-size: 12px;
                     font-weight: 400;
                     border-bottom: 1px solid transparent;">Welcome,<form id="f1" method="post">
                             {%csrf_token%}{{username}}
+                    </li>
+                    <li style="color: #cbec5f;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    font-weight: 400;
+                    border-bottom: 1px solid transparent;"><a href="{%url 'profile' %}">My Profile</a>
                     </li>
                     <li><a href="{%url 'login'%}" class="btn btn-danger"
                                 style="border-radius: 5px;" >Logout</a></li>
