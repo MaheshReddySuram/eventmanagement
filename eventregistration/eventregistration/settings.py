@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +30,8 @@ SECRET_KEY = 'django-insecure-dt36((4dr38y@i#q%z9k_w+0c%h^m#c9=s5bhton5ty6z4lk^c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.147.238.164','maheshreddy.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -76,11 +81,11 @@ WSGI_APPLICATION = 'eventregistration.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eventshowcase',  # your database name
-        'USER': 'root',           # your MySQL user
-        'PASSWORD': 'SAKETh@82',  # your MySQL password
-        'HOST': '3.147.238.164',  # IP of the EC2 instance
-        'PORT': '3306',           # default MySQL port
+        'NAME': os.getenv('DB_NAME', 'event_db'),
+        'USER': os.getenv('DB_USER', 'user'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'password'),
+        'HOST': os.getenv('DB_HOST', '34.47.224.192'),
+        'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
 
