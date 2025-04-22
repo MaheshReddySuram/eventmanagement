@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Eventia-World is here</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{%static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'bower_components/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/main.css' %}">
+
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- logo -->
+                <div class="site-branding">
+                    <a class="logo" href="{% url 'index' %}">
+                        Eventia
+                    </a>
+                </div>
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div><!-- /.navbar-header -->
+
+            <div class="collapse navbar-collapse" id="navbar-items">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <!-- navigation menu -->
+                    <li><a data-scroll href="{% url 'index1' %}">About</a></li>
+                    <li  class="active"><a href="{% url 'get_events' %}">Events</a></li>
+                    <li><a data-scroll href="#faqs">FAQs</a></li>
+                    <li><a data-scroll href="{% url 'index1' %}">Contact Us</a></li>
+                    <li style="color: #fff;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    font-weight: 400;
+                    border-bottom: 1px solid transparent;">Welcome,<form id="f1" method="post">
+                            {%csrf_token%}{{username}}
+                    </li>
+                    <li><a href="{%url 'login'%}" class="btn btn-danger"
+                                style="border-radius: 5px;" >Logout</a></li>
+                    </form>
+                </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav>
+
+    <header id="site-header" class="site-header valign-center">
+        <div class="intro">
+
+            <h2>All events at one place</h2>
+            <br>
+            <h1>Open up to the world</h1>
+            <br>
+            <p>Scroll to view the events</p>
+            <br>
+
+        </div>
+    </header>
+
+    <div class="container">
+        <form method="post" id="events" name="events">
+          {%csrf_token%}
+          {%for x in events%}
+          <div class="event" style="display: inline-grid;
+          width: 300px;
+          height: 400px;
+          margin: 10px;
+          padding: 10px;
+          border: 1px solid hsl(0, 0%, 100%);
+          text-align: justify;
+          font-family: 'Cambria', 'Cochin', 'Georgia', Times, 'Times New Roman', 'sans-serif';
+          font-size: 15px;
+          /* background-image: linear-gradient(rgb(131, 245, 247), rgb(78, 242, 119));;*/
+          border-radius: 25px;
+          box-shadow: 1px 1px 3px grey;
+          align-content: space-between;">
+            <u>
+              <h4>{{x.event_name}}</h4>
+            </u>
+            <span style="text-transform: capitalize;">By:&nbsp;{{x.event_organizer}}</span>
+            <span style="text-transform:uppercase;">Type:&nbsp;{{x.event_type}}</span>
+            <p>Location:&nbsp;{{x.venue}}</p>
+            <p><i>{{x.description}}</i></p>
+            <span>On: {{x.date}}&nbsp;&nbsp;At: {{x.time}}</span>
+            <span>Capacity: {{x.capacity}}</span><span>Price: {{x.cost}}</span>
+            <a href="#" class="button" data-toggle="modal" data-target="#registrationModal" style="background-color: #fcb32c;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;">Register</a>
+    
+          </div>
+          {%endfor%}
+        </form>
+      </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="registrationModalLabel">Registration Successful</h4>
+            </div>
+            <div class="modal-body">
+                You have been added to the attendee list. Our team will contact you.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+
+
+    
+    
+    
+
+    <section id="faqs" class="section faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">FAQs about us</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne"> How do I register for an event on the website?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    Simply click on the "Register Now" button on the event page, and follow the prompts
+                                    to complete your registration and payment.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">Can I make changes to my registration after I have
+                                        submitted it?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingTwo">
+                                <div class="panel-body">Unfortunately, you cannot make changes to your registration
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree"> Is my personal information secure when I register
+                                        on the website?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingThree">
+                                <div class="panel-body">Yes, event websites typically use industry-standard security
+                                    measures to protect your personal information, including SSL encryption and secure
+                                    payment processing.</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour"> What happens if the event is cancelled or
+                                        rescheduled?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingFour">
+                                <div class="panel-body">In the event of a cancellation or rescheduling, you will
+                                    typically be notified by email or through the website, and given options for refunds
+                                    or rescheduling.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="photos" class="section photos">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Photos</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="grid">
+
+                        <li class="grid-item grid-item-sm-6">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-1.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-2.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-3.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-5.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-6.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-7.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img- center-block"
+                                src="{% static 'assets/imresponsiveages/photos/photos-8.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-2.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-3.jpg' %}">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="section location">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3 class="section-title">You can reach us directly</h3>
+                    <address>
+                        <p>Eventia<br> Phone:+1 (928) 221 0905<br> Email:ms5383@nau.edu</p>
+                    </address>
+                </div>
+                <div class="col-sm-9">
+                    <div class="gmap_canvas"><iframe width="770" height="300" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=Northern Arizona University&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                height: 510px;
+                                width: 770px;
+                            }
+                        </style>
+                        
+                        <style>
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                height: 510px;
+                                width: 770px;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="site-info">Designed &amp;&nbsp;Developed by<br>&diams;&nbsp;Vinay
+                        <br>&diams;&nbsp;Geetika<br>
+                        &diams;&nbsp;Saketh<br>&diams;&nbsp;Mahesh Reddy Suram<br></p>
+                    <ul class="social-block">
+                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- script -->
+    <script src="{%static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{%static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{%static 'bower_components/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+    <script src="{%static 'assets/js/main.js' %}"></script>
+
+
+
+
+
+</body>
+
+</html>

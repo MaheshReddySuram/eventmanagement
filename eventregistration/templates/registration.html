@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>Register Here...</title>
+  <style>
+    /* Add animation to the form */
+    .form-group {
+      animation: slide-in 0.5s ease-out;
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(-50%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* Add a background color to the form container */
+    form {
+      background-color: transparent;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    /* Add background color to the input fields and select boxes */
+    input,
+    select {
+      background-color: #fff;
+    }
+
+    /* Add background color to the submit button */
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    /* Change the background color of the submit button on hover */
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    /* Use the flexbox layout to align the form elements in a row */
+    form {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* Set the width of each form element to 50% */
+    .form-group {
+      width: 50%;
+      padding: 0 10px;
+    }
+
+    /* Make the submit button full width */
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+
+    /* Make required * red */
+    .required {
+      color: red;
+    }
+  </style>
+</head>
+
+<body style="background-image:url('../static/img/register_bg.jpg'); background-size: cover; ">
+  <a href="{% url 'login' %}"><img src="{%static 'img/logo.png' %}" align="center" width='170px' height='170px'
+      alt="Logo" id="logo"></a>
+  <form id="registration" name="registration" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div class="form-group">
+      <label for="email">Email address<span class="required">*</span></label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+        placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password<span class="required">*</span></label>
+      <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+    </div>
+    <div class="form-group">
+      <label for="confirmpassword">Confirm Password<span class="required">*</span></label>
+      <input type="password" class="form-control" id="confirmpassword" name="confirmpassword"
+        placeholder="Confirm the password">
+    </div>
+
+    <div class="form-group">
+      <label for="nationality">Nationality<span class="required">*</span></label>
+      <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter nationality">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender<span class="required">*</span></label>
+      <select class="form-control" id="gender" name="gender">
+        <option selected disabled>-select gender-</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="usertype">User Type<span class="required">*</span></label>
+      <select class="form-control" id="usertype" name="usertype">
+        <option selected disabled>-select user-</option>
+        <option value="attendee">Attendee</option>
+        <option value="eventmanager">Event Manager</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="dateofbirth">Date of Birth<span class="required">*</span></label>
+      <input type="date" class="form-control" id="dateofbirth" name="dob">
+    </div>
+    <div class="form-group">
+      <label for="State_ID">State ID</label>
+      <input type="text" class="form-control" id="State_ID" name="State_ID" placeholder="Enter State_ID">
+    </div>
+    
+    <input type="submit" value="Register" name="Register" class="btn btn-success"
+      style="width: 100%; margin-top: 20px; margin-bottom: 20px;"></input>
+    <br />
+
+  </form>
+  
+  <div align="center">
+    <label>Already a user?&nbsp<a href="{% url 'login' %}">Login here</a></label>
+  </div>
+  <div align="center">
+    <label>Want to know us?&nbsp<a href="{% url 'index' %}">Click Here</a></label>
+  </div>
+
+  <script>
+    function validate() {
+
+      var email = document.registration.email.value.trim();
+      var password = document.registration.password.value.trim();
+      var confirmPassword = document.registration.confirmpassword.value.trim();
+      var nationality = document.registration.nationality.value.trim();
+      var gender = document.registration.gender.value.trim();
+      var usertype = document.registration.usertype.value.trim();
+      var dob = document.registration.dob.value.trim();
+      //var State_ID = document.registration.State_ID.value.trim();
+
+      // Validate email
+
+      if (email == '') {
+        alert('Email is required');
+        return false;
+      }
+      else if (!validateEmail(email)) {
+        alert('Please enter a valid email address');
+        return false;
+      }
+
+      // Validate password
+
+      else if (password == '') {
+        alert('Password is required');
+        return false;
+      }
+      else if (password.length < 8) {
+        alert('Password should be atleast 8 characters long');
+        return false;
+      }
+
+      // Validate confirm password
+
+      else if (confirmPassword == '') {
+        alert('Confirm password is required');
+        return false;
+      }
+      else if (password != confirmPassword) {
+        alert('Passwords do not match');
+        return false;
+      }
+
+      // Validate nationality
+
+      else if (nationality == '') {
+        alert('Nationality is required');
+        return false;
+      }
+
+      // Validate gender
+
+      if (gender == "-select gender-") {
+        alert('Please specify your gender');
+        return false;
+      }
+
+      // Validate user type
+
+      if (usertype == '-select user-') {
+        alert('Select the user type');
+        return false;
+      }
+
+      // Validate date of birth
+
+      else if (dob == '') {
+        alert('Date of birth is required');
+        return false;
+      }
+
+      // Validate State_ID number
+
+      // else if (State_ID == '') {
+      //   alert('State_ID number is required');
+      //   return false;
+      // }
+      // else if (!validateState_ID(State_ID)) {
+      //   alert('Please enter a valid State_ID number');
+      //   return false;
+      // }
+
+      // Submit form if all validation passes
+      return true;
+    }
+
+    // Email validation function
+    function validateEmail(email) {
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    // State_ID number validation function
+    function validateState_ID(State_ID) {
+      var re = /^\d{12}$/;
+      return re.test(State_ID);
+    }
+
+  </script>
+
+</body>
+
+</html>

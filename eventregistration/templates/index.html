@@ -1,0 +1,584 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Eventia-World is here</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{%static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'bower_components/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/css/main.css' %}">
+
+</head>
+
+<body data-spy="scroll" data-target="#site-nav">
+    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- logo -->
+                <div class="site-branding">
+                    <a class="logo" href="{% url 'index' %}">
+                        Eventia
+                    </a>
+                </div>
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div><!-- /.navbar-header -->
+
+            <div class="collapse navbar-collapse" id="navbar-items">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <!-- navigation menu -->
+                    <li class="active"><a data-scroll href="#about">About</a></li>
+                    <li><a  href="{% url 'login' %}">Events</a></li>
+                    <li><a data-scroll href="#faqs">FAQs</a></li>
+                    <li><a data-scroll href="#contact-us">Contact Us</a></li>
+                    <li><a href="{% url 'login' %}">Sign in</a></li>
+
+                </ul>
+            </div>
+        </div><!-- /.container -->
+    </nav>
+
+    <header id="site-header" class="site-header valign-center">
+        <div class="intro">
+
+            <h2>All events at one place</h2>
+            <br>
+            <h1>Open up to the world</h1>
+            <br>
+            <p>Host &amp; register at one stop</p>
+            <br>
+            <a class="btn btn-white" href="{% url 'registration' %}">Register Now</a>
+
+        </div>
+    </header>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h3 class="section-title">About Us</h3>
+
+                    <p>Eventia is a web-based event showcase system that helps event planners and organizers to market
+                        their events online. The platform offers an easy-to-use interface to host the events and also
+                        register to them.</p>
+
+                    <figure>
+                        <img alt="" class="img-responsive" src="assets/images/about-us.jpg">
+                    </figure>
+
+                </div><!-- /.col-sm-6 -->
+
+                <div class="col-sm-6">
+
+                    <h3 class="section-title multiple-title">What is Our Goal?</h3>
+
+                    <p>The goal of Eventia is to provide an easy-to-use and visually appealing event showcase system
+                        that helps event planners and organizers market their events online, increase attendance, and
+                        generate revenue.</p>
+
+                    <ul class="list-arrow-right">
+
+                        <li>Attendees can easily access event information &amp; purchase tickets online</li>
+                        <li>Avoid any confusion or misunderstandings regarding events</li>
+                        <li>Increase the visibility of your event</li>
+                        <li>Cost-effective way to promote your event</li>
+
+                    </ul>
+
+                </div><!-- /.col-sm-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+
+
+
+    <section id="speakers" class="section speakers">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h3 class="section-title">Developers</h3>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="speaker">
+
+                        <h4>Mahesh Reddy Suram</h4>
+
+                        <p>UI and backend developer</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-4">
+                    <div class="speaker">
+
+                        <h4>Geetika</h4>
+
+                        <p>Database developer</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-4">
+                    <div class="speaker">
+
+                        <h4>Saketh</h4>
+
+                        <p>Product Tester</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.speaker -->
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div class="speaker">
+
+                        <h4>Vinay</h4>
+
+                        <p>Product Tester</p>
+
+                        <ul class="social-block">
+                            <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                            <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                            <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                            <li><a href=""><i class="ion-social-googleplus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="contribution" class="section bg-image-2 contribution">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-uppercase mt0 font-400">We value your opinion</h3>
+
+                    <p>We strive to provide the best possible user experience on our website.
+                        Is there anything that you think we could improve or do differently?</p>
+
+
+  
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container" style="margin-top: 50px;max-width: 500px;" id="contact-us">
+        <h1 style="font-size: 36px;text-align: center;margin-bottom: 30px;" >Contact us</h1>
+        <form id="contact-form" method="post">
+            {%csrf_token%}
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="email" style="font-weight: bold;">Email Address:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="mobile" style="font-weight: bold;">Mobile Number:</label>
+                <input type="tel" class="form-control" id="mobile" name="mobile" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="city" style="font-weight: bold;">City:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="subject" style="font-weight: bold;">Subject:</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="message" style="font-weight: bold;">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <input type="submit" value="Send" class="btn btn-primary"></input>
+        </form>
+    </div>
+
+    <!--<section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event Schedule</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="09:00">09:00 am</time> - <time datetime="22:00">10:00 am</time>
+                        </div>
+                        <h3>Welcome and intro</h3>
+                        <p>Mustafizur Khan, SD Asia</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
+                        </div>
+                        <h3>Tips and share</h3>
+                        <p>Mustafizur Khan, SD Asia</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
+                        </div>
+                        <h3>View from the top</h3>
+                        <p>Mustafizur Khan, SD Asia</p>
+                    </div>
+                </div>
+            </div>
+    </section>-->
+
+    <!--<section id="partner" class="section partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Event Partner</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-1"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-2"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-3"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-4"></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-5"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-6"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-7"></a>
+                </div>
+                <div class="col-sm-3">
+                    <a class="partner-box partner-box-8"></a>
+                </div>
+            </div>
+    </section>-->
+
+    <section id="faqs" class="section faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">FAQs about us</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne"> How do I register for an event on the website?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    Simply click on the "Register Now" button on the event page, and follow the prompts
+                                    to complete your registration and payment.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">Can I make changes to my registration after I have
+                                        submitted it?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingTwo">
+                                <div class="panel-body">Unfortunately, you cannot make changes to your registration
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree"> Is my personal information secure when I register
+                                        on the website?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingThree">
+                                <div class="panel-body">Yes, event websites typically use industry-standard security
+                                    measures to protect your personal information, including SSL encryption and secure
+                                    payment processing.</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="faq-toggle collapsed" role="button" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour"> What happens if the event is cancelled or
+                                        rescheduled?</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                                aria-labelledby="headingFour">
+                                <div class="panel-body">In the event of a cancellation or rescheduling, you will
+                                    typically be notified by email or through the website, and given options for refunds
+                                    or rescheduling.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="photos" class="section photos">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">Photos</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="grid">
+
+                        <li class="grid-item grid-item-sm-6">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-1.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-2.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-3.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-5.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-6.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-7.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img- center-block"
+                                src="{% static 'assets/imresponsiveages/photos/photos-8.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-2.jpg' %}">
+                        </li>
+
+                        <li class="grid-item grid-item-sm-3">
+                            <img alt="" class="img-responsive center-block"
+                                src="{% static 'assets/images/photos/photos-3.jpg' %}">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="section location">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3 class="section-title">You can reach us directly</h3>
+                    <address>
+                        <p>Eventia<br> Phone:+1 (928) 221 0905<br> Email:ms5383@nau.edu</p>
+                    </address>
+                </div>
+                <div class="col-sm-9">
+                    <div class="gmap_canvas"><iframe width="770" height="300" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=Northern Arizona University&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                            href="https://2yu.co">2yu</a><br>
+                        <style>
+                            .mapouter {
+                                position: relative;
+                                text-align: right;
+                                height: 510px;
+                                width: 770px;
+                            }
+                        </style>
+                        <a href="https://embedgooglemap.2yu.co">html embed google map</a>
+                        <style>
+                            .gmap_canvas {
+                                overflow: hidden;
+                                background: none !important;
+                                height: 510px;
+                                width: 770px;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="site-info">Designed &amp;&nbsp;Developed by<br>&diams;&nbsp;Vinay
+                        <br>&diams;&nbsp;Geetika<br>
+                        &diams;&nbsp;Saketh<br>&diams;&nbsp;Mahesh Reddy Suram<br></p>
+                    <ul class="social-block">
+                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
+                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
+                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
+                        <li><a href="mailto:kavyasriyada@gmail.com"><i class="ion-social-googleplus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- script -->
+    <script src="{%static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{%static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{%static 'bower_components/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+    <script src="{%static 'assets/js/main.js' %}"></script>
+
+    <script>
+        // Function to validate the form inputs
+        function validateForm() {
+          // Get input values
+          var email = document.getElementById("email").value;
+          var mobile = document.getElementById("mobile").value;
+          var city = document.getElementById("city").value;
+          var subject = document.getElementById("subject").value;
+          var message = document.getElementById("message").value;
+    
+          // Regular expressions for email and mobile number validation
+          var emailRegex = /\S+@\S+\.\S+/;
+          var mobileRegex = /^[0-9]{10}$/;
+    
+          // Check email format
+          if (!emailRegex.test(email)) {
+            alert("Invalid email address format. Please enter a valid email address.");
+            return false;
+          }
+    
+          // Check mobile number format
+          if (!mobileRegex.test(mobile)) {
+            alert("Invalid mobile number format. Please enter a 10-digit mobile number.");
+            return false;
+          }
+    
+                // Check if the city, subject, and message inputs are not empty
+                if (city.trim() == "") {
+            alert("Please enter your city.");
+            return false;
+          }
+          if (subject.trim() == "") {
+            alert("Please enter a subject.");
+            return false;
+          }
+          if (message.trim() == "") {
+            alert("Please enter a message.");
+            return false;
+          }
+    
+          // If all inputs are valid, return true
+          return true;
+        }
+    
+        // Add an event listener to the form to call the validateForm function when the form is submitted
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+          if (!validateForm()) {
+            event.preventDefault(); // Prevent the form from submitting if validation fails
+          }
+        });
+      </script>
+
+
+
+
+</body>
+
+</html>

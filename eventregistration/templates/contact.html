@@ -1,0 +1,116 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .container {
+      margin-top: 50px;
+      max-width: 500px;
+    }
+    h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>We Hear You</h1>
+    <form id="contact-form" method="post" action="#">
+      {%csrf_token%}
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" class="form-control" id="mobile" name="mobile" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" id="city" name="city" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" class="form-control" id="subject" name="subject" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to validate the form inputs
+    function validateForm() {
+      // Get input values
+      var email = document.getElementById("email").value;
+      var mobile = document.getElementById("mobile").value;
+      var city = document.getElementById("city").value;
+      var subject = document.getElementById("subject").value;
+      var message = document.getElementById("message").value;
+
+      // Regular expressions for email and mobile number validation
+      var emailRegex = /\S+@\S+\.\S+/;
+      var mobileRegex = /^[0-9]{10}$/;
+
+      // Check email format
+      if (!emailRegex.test(email)) {
+        alert("Invalid email address format. Please enter a valid email address.");
+        return false;
+      }
+
+      // Check mobile number format
+      if (!mobileRegex.test(mobile)) {
+        alert("Invalid mobile number format. Please enter a 10-digit mobile number.");
+        return false;
+      }
+
+            // Check if the city, subject, and message inputs are not empty
+            if (city.trim() == "") {
+        alert("Please enter your city.");
+        return false;
+      }
+      if (subject.trim() == "") {
+        alert("Please enter a subject.");
+        return false;
+      }
+      if (message.trim() == "") {
+        alert("Please enter a message.");
+        return false;
+      }
+
+      // If all inputs are valid, return true
+      return true;
+    }
+
+    // Add an event listener to the form to call the validateForm function when the form is submitted
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      if (!validateForm()) {
+        event.preventDefault(); // Prevent the form from submitting if validation fails
+      }
+    });
+  </script>
+</body>
+</html>
+

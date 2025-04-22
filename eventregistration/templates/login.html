@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <style>
+    /* Add animation to the form */
+    .form-container {
+      animation: slide-in 0.5s ease-out;
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(-50%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body style="background-image:url('../static/img/login_bg.jpg'); background-size: cover; ">
+  <nav class="navbar navbar-default">
+    <a class="navbar-brand" href="{% url 'login' %}"><img src="{%static 'img/logo.png' %}" width='170px' height='170px'
+        alt="Logo"></a>
+        
+  </nav>
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <div class="col-md-4 offset-md-4 form-container">
+        <span style=" font-size: 25px; text-align: center ; font-weight: bold;color: #ecf84c;">{{status}}</span>
+        
+        <form onsubmit="return validateForm()" method="post">
+          {%csrf_token%}
+          <h4 style="margin-bottom: 10px;">Sign in</h4>
+          <label style="margin: top 5px;">Stay updated with all the events</label>
+
+          <div class="form-group">
+            <br>
+            <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
+          </div>
+          <div class="form-group">
+
+            <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
+          </div>
+          <input type="submit" id="submit" name="submit" class="btn btn-info btn-block" value="Login"></input>
+          <br />
+          <div align="center">
+            <label>New user?</label>&nbsp<a href="{% url 'registration' %}" style="color:rgb(236, 244, 75)">Register
+              here</a>
+          </div>
+          <div align="center">
+            <label>Want to know us?&nbsp<a href="{% url 'index' %}" style="color:rgb(105, 241, 87)">Click Here</a></label>
+          </div>
+          <div align="center">
+            <label>Forgot Password?&nbsp<a href="{% url 'password_recovery' %}" style="color:rgb(78, 248, 228)">Click Here</a></label>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function validateForm() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      if (email == "" || password == "") {
+        alert("Both email and password are required");
+        return false;
+      } else if (!validateEmail(email)) {
+        alert("Invalid email address");
+        return false;
+      } else {
+        return true;
+      }
+      function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+    }
+  </script>
+</body>
+
+</html>
