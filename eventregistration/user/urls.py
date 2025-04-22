@@ -31,6 +31,6 @@ urlpatterns=[
     path('a_deleteem/<str:email>/',views.a_deleteem,name='a_deleteem'),
     path('a_deletemsg/<str:sl_no>/',views.a_deletemsg,name='a_deletemsg'),
     path('em_editevent/<str:e_id>/',views.em_editevent,name='em_editevent'),
-    path('deleteprofile/<str:email/',views.deleteprofile,name='deleteprofile'),
+    path('deleteprofile/<str:email>/',views.deleteprofile,name='deleteprofile'),
 
 ]
