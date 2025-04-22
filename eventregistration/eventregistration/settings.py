@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eventshowcase',
         'USER': 'root',
-        'PASSWORD': '',  # Leave blank if using sudo mysql
+        'PASSWORD': 'root',  # Leave blank if using sudo mysql
         'HOST': 'localhost',
         'PORT': '3306',
     }
